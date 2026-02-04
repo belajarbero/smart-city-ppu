@@ -1,261 +1,187 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart City PPU - Penerapan Smart City di Kabupaten Penajam Paser Utara</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Ikon dari Font Awesome -->
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            overflow-x: hidden;
-        }
-        nav {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 10px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        nav li {
-            margin: 0 15px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1em;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
-        }
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffeb3b;
-        }
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background: rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        header p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .dimensi {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            overflow: hidden;
-        }
-        .card:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.5);
-        }
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-        .card .icon {
-            font-size: 3em;
-            color: #ffeb3b;
-            margin-bottom: 10px;
-        }
-        .card h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .card p {
-            font-size: 1em;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-        }
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav li {
-                margin: 5px 0;
-            }
-            .dimensi {
-                flex-direction: column;
-                align-items: center;
-            }
-            .card {
-                width: 80%;
-            }
-        }
-    </style>
-</head>
-<body>
+<!-- HEADER -->
+<header>
+  <div class="container header-container">
+    <h1 class="logo">Smart City PPU</h1>
     <nav>
-        <ul>
-            <li><a href="#beranda">Beranda</a></li>
-            <li><a href="#profil">Profil</a></li>
-            <li><a href="#dimensi">Dimensi</a></li>
-            <li><a href="#spbe">SPBE</a></li>
-            <li><a href="#dewan">Dewan Smart City</a></li>
-            <li><a href="#dokumen">Dokumen</a></li>
-            <li><a href="#galeri">Galeri</a></li>
-            <li><a href="#peta">Peta</a></li>
-        </ul>
+      <ul class="nav-menu" role="menubar" aria-label="Primary Navigation">
+        <li role="none">
+          <a href="#hero" role="menuitem" tabindex="0">Beranda</a>
+        </li>
+        <li role="none" class="has-submenu">
+          <a href="#dimensi" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Dimensi</a>
+          <ul class="submenu" role="menu" aria-label="Dimensi Submenu">
+            <li role="none"><a href="#governance" role="menuitem" tabindex="-1">Smart Governance</a></li>
+            <li role="none"><a href="#economy" role="menuitem" tabindex="-1">Smart Economy</a></li>
+            <li role="none"><a href="#living" role="menuitem" tabindex="-1">Smart Living</a></li>
+            <li role="none"><a href="#branding" role="menuitem" tabindex="-1">Smart Branding</a></li>
+            <li role="none"><a href="#society" role="menuitem" tabindex="-1">Smart Society</a></li>
+            <li role="none"><a href="#environment" role="menuitem" tabindex="-1">Smart Environment</a></li>
+          </ul>
+        </li>
+        <li role="none" class="has-submenu">
+          <a href="#programs" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Program</a>
+          <ul class="submenu" role="menu" aria-label="Program Submenu">
+            <li role="none"><a href="#governance" role="menuitem" tabindex="-1">Governance Program</a></li>
+            <li role="none"><a href="#economy" role="menuitem" tabindex="-1">Economy Program</a></li>
+            <li role="none"><a href="#environment" role="menuitem" tabindex="-1">Environment Program</a></li>
+            <li role="none"><a href="#living" role="menuitem" tabindex="-1">Living Program</a></li>
+          </ul>
+        </li>
+        <li role="none">
+          <a href="#campuslife" role="menuitem" tabindex="0">Kehidupan Kota</a>
+        </li>
+        <li role="none"><a href="#blog" role="menuitem" tabindex="0">Berita</a></li>
+        <li role="none"><a href="#contact" role="menuitem" tabindex="0">Kontak</a></li>
+      </ul>
+      <button class="btn-join" tabindex="0">Gabung Sekarang</button>
     </nav>
+  </div>
+</header>
 
-    <header id="beranda">
-        <h1>Smart City PPU</h1>
-        <p>Mewujudkan Kabupaten Penajam Paser Utara sebagai Kota Pintar yang Inovatif dan Berkelanjutan</p>
-    </header>
-
-    <section id="profil">
-        <h2 style="text-align: center; font-size: 2.5em;">Profil Smart City di PPU</h2>
-        <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin: 0 auto;">
-            Kabupaten Penajam Paser Utara (PPU) sedang mengembangkan konsep Smart City untuk meningkatkan kualitas hidup masyarakat melalui teknologi canggih. 
-            Website ini menjelaskan penerapan dimensi-dimensi Smart City yang sedang diimplementasikan di daerah ini.
-        </p>
-    </section>
-
-    <section id="dimensi">
-        <h2 style="text-align: center; font-size: 2.5em;">Dimensi Smart City di PPU</h2>
-        <div class="dimensi">
-            <div class="card">
-                <img src="https://source.unsplash.com/featured/?technology,government,ai" alt="Smart Governance - Teknologi AI untuk Pemerintah">
-                <div class="icon"><i class="fas fa-gavel"></i></div>
-                <h3>Smart Governance</h3>
-                <p>Penerapan e-government untuk transparansi dan efisiensi layanan publik, seperti sistem pelaporan online dan digitalisasi administrasi.</p>
-            </div>
-            <div class="card">
-                <img src="https://source.unsplash.com/featured/?technology,economy,startup" alt="Smart Economy - Startup Teknologi">
-                <div class="icon"><i class="fas fa-chart-line"></i></div>
-                <h3>Smart Economy</h3>
-                <p>Pengembangan ekonomi digital melalui startup lokal, e-commerce, dan inovasi teknologi untuk meningkatkan lapangan kerja.</p>
-            </div>
-            <div class="card">
-                <img src="https://source.unsplash.com/featured/?technology,mobility,transport" alt="Smart Mobility - Transportasi Cerdas">
-                <div class="icon"><i class="fas fa-car"></i></div>
-                <h3>Smart Mobility</h3>
-                <p>Sistem transportasi cerdas dengan aplikasi tracking kendaraan umum, pengurangan kemacetan, dan integrasi transportasi multimodal.</p>
-            </div>
-            <div class="card">
-                <img src="https://source.unsplash.com/featured/?technology,environment,solar" alt="Smart Environment - Energi Terbarukan">
-                <div class="icon"><i class="fas fa-leaf"></i></div>
-                <h3>Smart Environment</h3>
-                <p>Monitoring lingkungan real-time untuk pengelolaan sampah, energi terbarukan, dan konservasi sumber daya alam di PPU.</p>
-            </div>
-            <div class="card">
-                <img src="https://source.unsplash.com/featured/?technology,living,smart-home" alt="Smart Living - Rumah Pintar">
-                <div class="icon"><i class="fas fa-home"></i></div>
-                <h3>Smart Living</h3>
-                <p>Peningkatan kualitas hidup melalui smart home, kesehatan digital, dan akses pendidikan online untuk semua warga.</p>
-            </div>
-            <div class="card">
-                <img src="https://source.unsplash.com/featured/?technology,people,education" alt="Smart People - Pendidikan Teknologi">
-                <div class="icon"><i class="fas fa-users"></i></div>
-                <h3>Smart People</h3>
-                <p>Pemberdayaan masyarakat melalui pendidikan teknologi, literasi digital, dan partisipasi aktif dalam inovasi kota pintar.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="spbe">
-        <h2 style="text-align: center; font-size: 2.5em;">Sistem Pemerintahan Berbasis Elektronik (SPBE)</h2>
-        <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin: 0 auto;">
-            SPBE di PPU meliputi integrasi layanan digital untuk pemerintah yang efisien, termasuk aplikasi e-office dan data terpusat. 
-            (Placeholder: Tambahkan detail lebih lanjut atau gambar terkait teknologi pemerintah.)
-        </p>
-    </section>
-
-    <section id="dewan">
-        <h2 style="text-align: center; font-size: 2.5em;">Dewan Smart City</h2>
-        <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin: 0 auto;">
-            Dewan ini terdiri dari stakeholder utama yang mengawasi implementasi Smart City di PPU, termasuk pemerintah, masyarakat, dan ahli teknologi. 
-            (Placeholder: Tambahkan anggota dewan atau agenda rapat.)
-        </p>
-    </section>
-
-    <section id="dokumen">
-        <h2 style="text-align: center; font-size: 2.5em;">Dokumen</h2>
-        <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin: 0 auto;">
-            Akses dokumen resmi terkait Smart City PPU, seperti rencana induk, laporan kemajuan, dan regulasi. 
-            (Placeholder: Tambahkan link download atau embed PDF.)
-        </p>
-    </section>
-
-    <section id="galeri">
-        <h2 style="text-align: center; font-size: 2.5em;">Galeri</h2>
-        <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin: 0 auto;">
-            Koleksi foto dan video implementasi Smart City di PPU, menampilkan inovasi teknologi di lapangan. 
-            (Placeholder: Tambahkan grid gambar atau slider.)
-        </p>
-    </section>
-
-    <section id="peta">
-        <h2 style="text-align: center; font-size: 2.5em;">Peta</h2>
-        <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin: 0 auto;">
-            Peta interaktif lokasi proyek Smart City di Kabupaten Penajam Paser Utara. 
-            (Placeholder: Tambahkan embed Google Maps atau peta kustom.)
-        </p>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Smart City PPU. Semua hak dilindungi. Kunjungi kami untuk update terbaru!</p>
-    </footer>
-
-    <script>
-        // Animasi muncul saat scroll
-        window.addEventListener('scroll', function() {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
-            });
-        });
-        // Set initial opacity dan transform
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s, transform 0.5s';
-        });
-    </script>
-</body>
-</html>
+<style>
+  /* Header styling */
+  header {
+    background-color: #062c54;
+    color: white;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1.8px;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+  .nav-menu > li {
+    position: relative;
+  }
+  .nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+  }
+  .nav-menu a:hover,
+  .nav-menu a:focus {
+    background-color: #0056b3;
+    outline: none;
+    border-radius: 4px;
+  }
+  /* Submenu */
+  .has-submenu > a::after {
+    content: " ▼";
+    font-size: 0.6rem;
+  }
+  .submenu {
+    position: absolute;
+    top: 130%;
+    left: 0;
+    background-color: #0b3a7a;
+    border-radius: 6px;
+    min-width: 180px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 10000;
+  }
+  .submenu li {
+    padding: 0;
+  }
+  .submenu a {
+    padding: 0.7rem 1.2rem;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #c6d1e1;
+  }
+  .submenu a:hover, 
+  .submenu a:focus {
+    background-color: #007bff;
+    color: white;
+    outline: none;
+  }
+  /* Show submenu on hover or focus of parent */
+  .has-submenu:hover > .submenu,
+  .has-submenu:focus-within > .submenu {
+    opacity: 1;
+    visibility: visible;
+  }
+  /* Button join */
+  .btn-join {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 26px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  .btn-join:hover,
+  .btn-join:focus {
+    background-color: #1e7e34;
+    outline: none;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header-container {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    nav {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .nav-menu {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .nav-menu > li {
+      position: static;
+    }
+    .submenu {
+      position: relative;
+      top: 0;
+      opacity: 1 !important;
+      visibility: visible !important;
+      box-shadow: none;
+      background-color: transparent;
+      padding-left: 1rem;
+      margin-top: 0;
+    }
+    .submenu a {
+      color: #e9ecef;
+      padding: 0.4rem 0;
+    }
+    .has-submenu > a::after {
+      content: "";
+    }
+  }
+</style>
