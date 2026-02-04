@@ -1,187 +1,901 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart City PPU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #f7fafc;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        h1,h2,h3,h4,h5 {
+            margin: 0 0 0.5rem;
+            font-weight: 700;
+            color: #062c54;
+        }
+        p {
+            margin: 0 0 1rem;
+            color: #4a5a6a;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        /* Header */
+        header {
+            background-color: #062c54;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+        }
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('https://source.unsplash.com/1600x900/?city,technology,smart');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 2rem 6rem;
+            text-align: left;
+            color: white;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(6, 44, 84, 0.75);
+            z-index: 0;
+            border-radius: 0 0 50% 50% / 20%;
+        }
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            z-index: 1;
+        }
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .hero-content button {
+            font-size: 1.1rem;
+            padding: 14px 36px;
+            border-radius: 30px;
+        }
+
+        /* Info Cards under hero */
+        .info-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: -80px;
+            flex-wrap: wrap;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+        .card {
+            background: white;
+            flex: 1 1 280px;
+            border-radius: 12px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 6px 16px rgb(0 0 0 / 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.13);
+        }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+        .card h3 {
+            margin-bottom: 0.6rem;
+            color: #062c54;
+        }
+        /* Section with image & text */
+        .double-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 4rem 0;
+        }
+        .double-section img {
+            border-radius: 12px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+        }
+        .double-section .text-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #062c54;
+        }
+        .double-section .text-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: #4a5a6a;
+        }
+        .double-section .text-content button {
+            font-size: 1.1rem;
+        }
+        /* Stats section */
+        .stats {
+            background: #007bff;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .stat-item {
+            flex: 1 1 180px;
+        }
+        .stat-item h4 {
+            font-size: 2.5rem;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        /* Learning Programs Section */
+        .programs-section {
+            padding-bottom: 4rem;
+        }
+        .programs-section h3 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
+            color: #062c54;
+        }
+        .program-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .program-filters button {
+            background-color: #e9f4ff;
+            border: 1.5px solid #007bff;
+            color: #007bff;
+            font-weight: 600;
+            padding: 8px 22px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .program-filters button.active,
+        .program-filters button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .program-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .program-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 320px;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+        .program-card:hover {
+            box-shadow: 0 14px 32px rgba(0,0,0,0.16);
+        }
+        .program-img {
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .program-body {
+            padding: 1.5rem 1.8rem;
+        }
+        .program-body h4 {
+            margin-bottom: 0.5rem;
+            color: #062c54;
+        }
+        .program-body .price {
+            color: #28a745;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        .program-body p {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            color: #4a5a6a;
+        }
+        .program-body button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 24px;
+            word-break: keep-all;
+        }
+        /* Campus Life Section */
+        .campus-life {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .campus-life h3 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #062c54;
+        }
+        .campus-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .campus-card {
+            background: white;
+            border-radius: 12px;
+            max-width: 280px;
+            box-shadow: 0 6px 18px rgb(0 0 0 / 0.1);
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
+        .campus-card:hover {
+            box-shadow: 0 14px 32px rgba(0,0,0,0.16);
+        }
+        .campus-card img {
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .campus-card .campus-text {
+            padding: 1.2rem 1rem;
+        }
+        .campus-card h4 {
+            margin-bottom: 0.6rem;
+            color: #062c54;
+        }
+        /* Tuition Section */
+        .tuition-section {
+            background-color: #e9f4ff;
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            max-width: 950px;
+            margin: 3rem auto 4rem;
+        }
+        .tuition-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tuition-header h3 {
+            font-size: 2rem;
+            flex: 1 1 300px;
+            color: #062c54;
+        }
+        .tuition-header p {
+            flex: 1 1 400px;
+            color: #4a5a6a;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .tuition-header .btn {
+            flex: 0 0 auto;
+            margin-left: auto;
+            margin-top: 1rem;
+        }
+        .tuition-lists {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tuition-list {
+            background: white;
+            flex: 1 1 300px;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            color: #062c54;
+        }
+        .tuition-list h4 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .tuition-list ul {
+            padding-left: 1.2rem;
+        }
+        .tuition-list ul li {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            line-height: 1.3;
+            color: #4a5a6a;
+        }
+        /* Testimonials Section */
+        .testimonials {
+            padding: 3rem 2rem;
+            background: white;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .testimonials h3 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #062c54;
+        }
+        .testimonial-body {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .testimonial-text {
+            max-width: 500px;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #34495e;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            color: #007bff;
+        }
+        /* Partners section */
+        .partners {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #f7fafc;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+        }
+        .partners h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #062c54;
+        }
+        .partner-logos {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .partner-logos img {
+            height: 50px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .partner-logos img:hover {
+            opacity: 1;
+        }
+
+        /* Blog section */
+        .blog-section {
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .blog-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #062c54;
+        }
+        .blog-cards {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            max-width: 300px;
+            overflow: hidden;
+            text-align: left;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            box-shadow: 0 14px 32px rgba(0,0,0,0.16);
+        }
+        .blog-card img {
+            height: 150px;
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .blog-content {
+            padding: 1.2rem 1.5rem;
+            flex-grow: 1;
+        }
+        .blog-content h4 {
+            margin-bottom: 0.75rem;
+            color: #062c54;
+        }
+        .blog-content p {
+            color: #4a5a6a;
+            font-size: 0.95rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        .blog-content a {
+            font-weight: 600;
+            color: #007bff;
+            font-size: 0.95rem;
+        }
+
+        /* Newsletter Signup */
+        .newsletter {
+            background-color: #004b8d;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+        .newsletter h3 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .newsletter form {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .newsletter input[type="email"] {
+            padding: 12px 16px;
+            border-radius: 50px;
+            border: none;
+            width: 250px;
+            font-size: 1rem;
+        }
+        .newsletter button {
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+        /* Footer */
+        footer {
+            background-color: #062c54;
+            color: #b8c7db;
+            padding: 3rem 2rem 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        footer a {
+            color: #7ba2dd;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-links {
+            max-width: 900px;
+            margin: 0 auto 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+        .footer-links div {
+            min-width: 120px;
+            text-align: left;
+        }
+        .footer-links div h5 {
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+        }
+        .footer-links div ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links div ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 960px) {
+            .double-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .double-section img {
+                margin-bottom: 2rem;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+            .info-cards {
+                flex-direction: column;
+            }
+            .program-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            .campus-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tuition-lists {
+                flex-direction: column;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .footer-links {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links div {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+
 <!-- HEADER -->
 <header>
-  <div class="container header-container">
-    <h1 class="logo">Smart City PPU</h1>
+    <h1>Smart City PPU</h1>
     <nav>
-      <ul class="nav-menu" role="menubar" aria-label="Primary Navigation">
-        <li role="none">
-          <a href="#hero" role="menuitem" tabindex="0">Beranda</a>
-        </li>
-        <li role="none" class="has-submenu">
-          <a href="#dimensi" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Dimensi</a>
-          <ul class="submenu" role="menu" aria-label="Dimensi Submenu">
-            <li role="none"><a href="#governance" role="menuitem" tabindex="-1">Smart Governance</a></li>
-            <li role="none"><a href="#economy" role="menuitem" tabindex="-1">Smart Economy</a></li>
-            <li role="none"><a href="#living" role="menuitem" tabindex="-1">Smart Living</a></li>
-            <li role="none"><a href="#branding" role="menuitem" tabindex="-1">Smart Branding</a></li>
-            <li role="none"><a href="#society" role="menuitem" tabindex="-1">Smart Society</a></li>
-            <li role="none"><a href="#environment" role="menuitem" tabindex="-1">Smart Environment</a></li>
-          </ul>
-        </li>
-        <li role="none" class="has-submenu">
-          <a href="#programs" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Program</a>
-          <ul class="submenu" role="menu" aria-label="Program Submenu">
-            <li role="none"><a href="#governance" role="menuitem" tabindex="-1">Governance Program</a></li>
-            <li role="none"><a href="#economy" role="menuitem" tabindex="-1">Economy Program</a></li>
-            <li role="none"><a href="#environment" role="menuitem" tabindex="-1">Environment Program</a></li>
-            <li role="none"><a href="#living" role="menuitem" tabindex="-1">Living Program</a></li>
-          </ul>
-        </li>
-        <li role="none">
-          <a href="#campuslife" role="menuitem" tabindex="0">Kehidupan Kota</a>
-        </li>
-        <li role="none"><a href="#blog" role="menuitem" tabindex="0">Berita</a></li>
-        <li role="none"><a href="#contact" role="menuitem" tabindex="0">Kontak</a></li>
-      </ul>
-      <button class="btn-join" tabindex="0">Gabung Sekarang</button>
+        <ul>
+            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#programs">Program</a></li>
+            <li><a href="#campuslife">Kehidupan Kota</a></li>
+            <li><a href="#testimonials">Testimoni</a></li>
+            <li><a href="#blog">Berita</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
     </nav>
-  </div>
 </header>
 
-<style>
-  /* Header styling */
-  header {
-    background-color: #062c54;
-    color: white;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
-  .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    font-weight: 700;
-    font-size: 1.8rem;
-    letter-spacing: 1.8px;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .nav-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 2rem;
-  }
-  .nav-menu > li {
-    position: relative;
-  }
-  .nav-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    padding: 0.3rem 0.5rem;
-    transition: background-color 0.3s, color 0.3s;
-    display: inline-block;
-  }
-  .nav-menu a:hover,
-  .nav-menu a:focus {
-    background-color: #0056b3;
-    outline: none;
-    border-radius: 4px;
-  }
-  /* Submenu */
-  .has-submenu > a::after {
-    content: " ▼";
-    font-size: 0.6rem;
-  }
-  .submenu {
-    position: absolute;
-    top: 130%;
-    left: 0;
-    background-color: #0b3a7a;
-    border-radius: 6px;
-    min-width: 180px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
-    z-index: 10000;
-  }
-  .submenu li {
-    padding: 0;
-  }
-  .submenu a {
-    padding: 0.7rem 1.2rem;
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #c6d1e1;
-  }
-  .submenu a:hover, 
-  .submenu a:focus {
-    background-color: #007bff;
-    color: white;
-    outline: none;
-  }
-  /* Show submenu on hover or focus of parent */
-  .has-submenu:hover > .submenu,
-  .has-submenu:focus-within > .submenu {
-    opacity: 1;
-    visibility: visible;
-  }
-  /* Button join */
-  .btn-join {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 10px 26px;
-    font-weight: 700;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  .btn-join:hover,
-  .btn-join:focus {
-    background-color: #1e7e34;
-    outline: none;
-  }
-  /* Responsive */
-  @media (max-width: 768px) {
-    .header-container {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    nav {
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .nav-menu {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .nav-menu > li {
-      position: static;
-    }
-    .submenu {
-      position: relative;
-      top: 0;
-      opacity: 1 !important;
-      visibility: visible !important;
-      box-shadow: none;
-      background-color: transparent;
-      padding-left: 1rem;
-      margin-top: 0;
-    }
-    .submenu a {
-      color: #e9ecef;
-      padding: 0.4rem 0;
-    }
-    .has-submenu > a::after {
-      content: "";
-    }
-  }
-</style>
+<!-- HERO -->
+<section id="hero" class="hero">
+    <div class="container hero-content">
+        <h2>Membangun Masa Depan Lebih Cerdas<br>Melalui Smart City PPU</h2>
+        <p>Mewujudkan Kabupaten Penajam Paser Utara sebagai pusat inovasi teknologi, keberlanjutan, dan kualitas hidup melalui penerapan smart city.</p>
+        <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Pelajari Lebih Lanjut</button>
+    </div>
+</section>
+
+<!-- Info Cards -->
+<section class="info-cards container" id="services">
+    <div class="card">
+        <div class="card-icon">🏛️</div>
+        <h3>Layanan Pemerintah Digital</h3>
+        <p>Layanan publik yang lebih transparan dan efisien dengan teknologi digital.</p>
+    </div>
+    <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Infrastruktur Digital Terpadu</h3>
+        <p>Koneksi dan sistem jaringan modern untuk mendukung mobilitas dan komunikasi.</p>
+    </div>
+    <div class="card">
+        <div class="card-icon">🌿</div>
+        <h3>Lingkungan Berkelanjutan</h3>
+        <p>Pengelolaan sumber daya alam dan lingkungan yang ramah dan cerdas.</p>
+    </div>
+</section>
+
+<!-- Double Section: Image & Text -->
+<section class="double-section container">
+    <img src="https://source.unsplash.com/featured/?smart-city-technology" alt="Smart City Technology" />
+    <div class="text-content">
+        <h3>Sistem Smart City PPU Mendorong Inovasi dan Kualitas Hidup</h3>
+        <p>Dengan platform terintegrasi, masyarakat PPU dapat menikmati layanan lebih mudah, ekonomi kreatif yang tumbuh, serta lingkungan yang dilindungi dan dikelola secara teknologi mutakhir.</p>
+        <button onclick="alert('Terima kasih, Anda ingin belajar lebih lanjut!')">Cari Tahu Selengkapnya</button>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats container" aria-label="Statistik Smart City PPU">
+    <div class="stat-item">
+        <h4>92%</h4>
+        <p>Pengurangan waktu layanan publik</p>
+    </div>
+    <div class="stat-item">
+        <h4>Top 5</h4>
+        <p>Kabupaten inovatif di Kalimantan Timur</p>
+    </div>
+    <div class="stat-item">
+        <h4>No. 1</h4>
+        <p>Pengelolaan lingkungan berbasis digital</p>
+    </div>
+</section>
+
+<!-- Programs Section -->
+<section class="programs-section container" id="programs">
+    <h3>Program Unggulan Smart City PPU</h3>
+    <div class="program-filters" aria-label="Filter program">
+        <button class="active" data-filter="all">Semua</button>
+        <button data-filter="governance">Governance</button>
+        <button data-filter="economy">Ekonomi</button>
+        <button data-filter="environment">Lingkungan</button>
+        <button data-filter="living">Kualitas Hidup</button>
+    </div>
+    <div class="program-cards">
+        <article class="program-card" data-category="governance" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?government,technology" alt="Pengembangan Pemerintahan Digital" />
+            <div class="program-body">
+                <h4>Pemerintahan Digital</h4>
+                <p>Meningkatkan transparansi dan layanan digital pemerintah kabupaten.</p>
+                <button>Pelajari</button>
+            </div>
+        </article>
+        <article class="program-card" data-category="economy" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?economic-development,technology" alt="Pengembangan Ekonomi" />
+            <div class="program-body">
+                <h4>Inovasi Ekonomi</h4>
+                <p>Mendorong startup dan UMKM berbasis teknologi di PPU.</p>
+                <button>Pelajari</button>
+            </div>
+        </article>
+        <article class="program-card" data-category="environment" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?environment,sustainability" alt="Pengelolaan Lingkungan" />
+            <div class="program-body">
+                <h4>Lingkungan Berkelanjutan</h4>
+                <p>Konservasi alam dan pemantauan kualitas lingkungan secara digital.</p>
+                <button>Pelajari</button>
+            </div>
+        </article>
+        <article class="program-card" data-category="living" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?smart-home,community" alt="Kualitas Hidup" />
+            <div class="program-body">
+                <h4>Smart Living</h4>
+                <p>Peningkatan kualitas hidup masyarakat melalui teknologi pintar.</p>
+                <button>Pelajari</button>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- Campus Life -->
+<section class="campus-life container" id="campuslife">
+    <h3>Kehidupan Kota dan Masyarakat di Smart City PPU</h3>
+    <div class="campus-cards" role="list">
+        <div class="campus-card" role="listitem" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?community" alt="Komunitas dan Sosial" />
+            <div class="campus-text">
+                <h4>Kehidupan Komunitas</h4>
+                <p>Aktivitas sosial dan komunitas teknologi yang berkembang di PPU.</p>
+            </div>
+        </div>
+        <div class="campus-card" role="listitem" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?urban-park" alt="Ruang Publik dan Fasilitas" />
+            <div class="campus-text">
+                <h4>Ruang Publik dan Fasilitas</h4>
+                <p>Ruang terbuka hijau dan fasilitas modern untuk warga.</p>
+            </div>
+        </div>
+        <div class="campus-card" role="listitem" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?sports,events" alt="Acara dan Olahraga" />
+            <div class="campus-text">
+                <h4>Olahraga & Hiburan</h4>
+                <p>Event budaya dan olahraga yang mendukung gaya hidup sehat.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials container" id="testimonials" aria-label="Testimoni">
+    <h3>Apa Kata Warga Tentang Smart City PPU</h3>
+    <div class="testimonial-body">
+        <blockquote class="testimonial-text">"Implementasi smart city di PPU sangat terasa manfaatnya. Layanan publik cepat dan lingkungan makin bersih. Highly recommended!"</blockquote>
+    </div>
+    <cite class="testimonial-author">- Andi Saputra, Warga PPU</cite>
+</section>
+
+<!-- Partners -->
+<section class="partners container" aria-label="Mitra">
+    <h3>Mitra dan Pendukung Smart City PPU</h3>
+    <div class="partner-logos" role="list">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_-_Smart_City_Expo_World_Congress.png" alt="Smart City Expo Logo" role="listitem" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logo_Pemerintah_Kabupaten_Penajam_Paser_Utara.png" alt="Kabupaten Penajam Paser Utara Logo" role="listitem" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Logo_Bappenas_Indonesia.svg/1200px-Logo_Bappenas_Indonesia.svg.png" alt="Bappenas Logo" role="listitem" />
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="blog-section container" id="blog">
+    <h3>Berita Terkini dan Tips Smart City</h3>
+    <div class="blog-cards">
+        <article class="blog-card" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?digital-transformation" alt="Digital Transformation" />
+            <div class="blog-content">
+                <h4>Transformasi Digital di PPU</h4>
+                <p>Bagaimana smart city mengubah layanan publik di Kabupaten PPU.</p>
+                <a href="#">Baca Selengkapnya →</a>
+            </div>
+        </article>
+        <article class="blog-card" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?environment,technology" alt="Environment Technology" />
+            <div class="blog-content">
+                <h4>Pantauan Lingkungan dengan IoT</h4>
+                <p>Teknologi pintar menjaga kelestarian alam di PPU.</p>
+                <a href="#">Baca Selengkapnya →</a>
+            </div>
+        </article>
+        <article class="blog-card" tabindex="0">
+            <img src="https://source.unsplash.com/featured/?urban-planning" alt="Urban Planning" />
+            <div class="blog-content">
+                <h4>Perencanaan Kota Modern</h4>
+                <p>Membangun tata ruang kota yang smart dan ramah warga.</p>
+                <a href="#">Baca Selengkapnya →</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter container" id="contact">
+    <h3>Berlangganan Info Terbaru Smart City PPU</h3>
+    <form onsubmit="event.preventDefault(); alert('Terima kasih telah berlangganan!');">
+        <input type="email" aria-label="Masukkan email Anda" placeholder="Masukkan email Anda" required />
+        <button type="submit">Daftar</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-links container" aria-label="Footer links">
+        <div>
+            <h5>Smart City PPU</h5>
+            <ul>
+                <li>Alamat: Jl. Pemuda No.1, Penajam</li>
+                <li>Telp: (0548) 1234567</li>
+                <li>Email: info@smartcityppu.id</li>
+            </ul>
+        </div>
+        <div>
+            <h5>Tautan</h5>
+            <ul>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#programs">Program</a></li>
+                <li><a href="#campuslife">Kehidupan Kota</a></li>
+                <li><a href="#blog">Berita</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5>Sosial Media</h5>
+            <ul>
+                <li><a href="#" aria-label="Facebook">Facebook</a></li>
+                <li><a href="#" aria-label="Twitter">Twitter</a></li>
+                <li><a href="#" aria-label="Instagram">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <p>© 2023 Smart City PPU. Semua hak dilindungi.</p>
+</footer>
+
+<script>
+    // Program filter functionality
+    const filterButtons = document.querySelectorAll('.program-filters button');
+    const programCards = document.querySelectorAll('.program-card');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+            programCards.forEach(card => {
+                if(filter === 'all' || card.dataset.category === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
